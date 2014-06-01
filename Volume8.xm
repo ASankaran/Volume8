@@ -15,10 +15,21 @@ static NSDate *now;
 - (id)init
 {
     self = [super init];
-    nextIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(next)]];
-    pauseIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(pause)]];
-    playIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(play)]];
-    previousIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(previous)]];
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00)
+    {
+        nextIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(next-retina)]];
+        pauseIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(pause-retina)]];
+        playIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(play-retina)]];
+        previousIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(previous-retina)]];
+    } 
+    else
+    {
+        nextIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(next)]];
+        pauseIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(pause)]];
+        playIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(play)]];
+        previousIcon = [UIImage imageWithData:[NSData dataWithContentsOfFile:iconPath(previous)]];
+    }
+    
     HUD = NULL;
     [self updateNow];
     return self;
