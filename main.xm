@@ -88,7 +88,7 @@ static UIWindow *topWindow;
     [vol8.HUD addSubview:volLabel];
     [volLabel release];
     
-    if(playing) {
+    if(playing && ![sbmc isMovie]) {
         topWindow.frame = CGRectMake(0, 0, 275, 190);
         button = [vol8 addButtonTo:vol8.HUD x:80 icon:vol8.pauseIcon selector:@selector(togglePlayPause:)];
         [vol8 addButtonTo:vol8.HUD x:30 icon:vol8.previousIcon target:self selector:@selector(prev)];

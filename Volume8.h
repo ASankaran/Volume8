@@ -1,13 +1,17 @@
 #import <UIKit/UIKit.h>
-#import <SpringBoard/SBMediaController.h>
-#import <SpringBoard/SBApplicationIcon.h>
-#import <SpringBoard/SBWallpaperView.h>
+//#import <SpringBoard/SBMediaController.h>
+//#import <SpringBoard/SBApplicationIcon.h>
+//#import <SpringBoard/SBWallpaperView.h>
 
 #define iconPath(name) @"/Library/MobileSubstrate/DynamicLibraries/com.mootjeuh.volume8.bundle/"#name".png"
 #define UIColorFromRGB(rgbValue) \
             [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
             green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
             blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+@interface SBApplication
+
+@end
 
 @interface Volume8 : NSObject
 
@@ -38,9 +42,25 @@
 
 @end
 
-@interface SBMediaController (Volume8)
+@interface SBMediaController
 
++ (id)sharedInstance;
 - (id)artwork;
 - (id)nowPlayingApplication;
+- (id)nowPlayingArtist;
+- (id)nowPlayingTitle;
+- (void)_changeVolumeBy:(float)by;
+- (BOOL)changeTrack:(int)track;
+- (float)volume;
+- (BOOL)togglePlayPause;
+- (BOOL)isPlaying;
+- (BOOL)isMovie;
+
+@end
+
+@interface SBApplicationIcon
+
+- (id)initWithApplication:(id)application;
+ -(id)getIconImage:(int)image;
 
 @end
