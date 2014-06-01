@@ -1,0 +1,9 @@
+Package: com.mootjeuh.volume8
+Name: Volume8
+Depends: mobilesubstrate
+Version: 0.1
+Architecture: iphoneos-arm
+Description: Windows 8-like volume HUD for iOS.
+Maintainer: mootjeuh
+Author: mootjeuh
+Section: Tweaks
